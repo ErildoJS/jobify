@@ -7,6 +7,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
+const port = process.env.PORT || 3333
+
 app.get('/', async (request, response) => {
   const db = await openDb()
   const categoriasDb = await db.all('select * from categorias;')
@@ -91,6 +93,6 @@ openDb().then(db => {
 })
 
 
-app.listen(3333, ()=> {
+app.listen(port, ()=> {
     console.log('running....');
 })
